@@ -1,38 +1,51 @@
-﻿function analyzeInput(arg = []) {
+﻿// 1 ==========================================
+
+function analyzeInput(arg = []) {
   console.log(Array.isArray(arg) ? "This is an array" : `Type: ${typeof arg}`);
 }
+
 analyzeInput();
 analyzeInput([4, 5, 6]);
 analyzeInput("");
 analyzeInput(null);
 
-// ==========================================
+// 2 ==========================================
 
 const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
 for (let i = 0; i < 10; i++) {
   setTimeout(() => console.log(arr[i]), 1000);
 }
+
 for (var i = 0; i < 10; i++) {
   setTimeout(() => console.log(arr[i]), 1000);
 }
 
-// ==========================================
+// 3 ==========================================
 
 let [a, ...b] = [1, 2, 3, 4, 5];
 
 console.log(a, b);
+
+// 4 ==========================================
+
 async function func() {
   return 10;
 }
 
 console.log(func());
-// function outer(f = inner()) {
-//   function inner() {
-//     return "Inner";
-//   }
-// }
 
-// outer();
+// 5 ==========================================
+
+function outer(f = inner()) {
+  function inner() {
+    return "Inner";
+  }
+}
+
+outer();
+
+// 6 ==========================================
 
 class Square {
   constructor(length) {
@@ -47,6 +60,14 @@ class Square {
     this.area = value;
   }
 }
+
+const squareObj = new Square(10);
+squareObj.area = 200;
+
+console.log(squareObj.area, squareObj.square);
+
+// 7 ==========================================
+
 class Vehicle {
   constructor(name) {
     this.name = name;
@@ -66,9 +87,12 @@ class Car extends Vehicle {
 }
 
 const car = new Car("BMW");
-const squareObj = new Square(10);
 
 console.log(car.start());
+car.start();
+
+// 8 ==========================================
+
 setTimeout(() => {
   console.log("1");
 }, 0);
@@ -76,6 +100,9 @@ setTimeout(() => {
 Promise.resolve("hello").then(() => console.log("2"));
 
 console.log("3");
+
+// 9 ==========================================
+
 let count = 10;
 
 (function innerFunc() {
@@ -87,13 +114,21 @@ let count = 10;
 
   console.log(count);
 })();
+
+// 10 =========================================
+
 console.log([0] == false);
+
+// 11 =========================================
 
 if ([0]) {
   console.log("I'm True");
 } else {
   console.log("I'm False");
 }
+
+// 12 =========================================
+
 message();
 
 function message() {
@@ -103,6 +138,7 @@ function message() {
 function message() {
   console.log("Bye");
 }
+
 function second() {
   var message;
 
@@ -122,6 +158,9 @@ var message = "default";
 first();
 
 console.log(message);
+
+// 13 =========================================
+
 let user1 = {
   name: "Jacob",
 
@@ -135,6 +174,9 @@ let user2 = {
 };
 
 console.log(user1 === user2);
+
+// 14 =========================================
+
 const promiseOne = new Promise((resolve, reject) => setTimeout(resolve, 4000));
 
 const promiseTwo = new Promise((resolve, reject) => setTimeout(reject, 4000));
